@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #1F4A89;
+    --color-accent: #C42B2B;
+    --color-lightGrey: #F8F9FB;
+    --color-darkGrey: #333333;
+    --color-highlight: #d44c4c;
+}
+
+/* Custom CSS for animations and fine-tuning */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@layer utilities {
+    @keyframes scroll-right {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    @keyframes scroll-left {
+        0% {
+            transform: translateX(-50%);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    .animate-scroll-right {
+        animation: scroll-right 20s linear infinite;
+    }
+
+    .animate-scroll-left {
+        animation: scroll-left 20s linear infinite;
+    }
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #C42B2B;
+    transition: width .3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.hero-section {
+    background-image: linear-gradient(to bottom right, rgba(31, 74, 137, .7), rgba(31, 74, 137, 0.1)), url('https://cdn.home-designing.com/wp-content/uploads/2022/03/modern-sofa-1024x602.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.btn {
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #C42B2B;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #d44c4c;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(196, 43, 43, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: #1F4A89;
+    transform: translateY(-3px);
+}
+
+.product-card img {
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.animate-scroll {
+    animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* Move the carousel by the width of the first set of cards */
+        transform: translateX(calc(-20rem * 3));
+        /* 20rem card width * 6 cards */
+    }
+}
+
+/* Pause animation on hover */
+.group:hover .animate-scroll {
+    animation-play-state: paused;
+}
